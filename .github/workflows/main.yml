@@ -22,7 +22,7 @@ jobs:
         run: pip install uv
 
       - name: Install ruff using uv
-        run: uv install ruff
+        run: uv add ruff
 
       - name: Run linting
         run: ruff check
