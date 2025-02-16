@@ -26,4 +26,4 @@ jobs:
 
       - name: Check source code formatting
         if: ${{ success() }}
-        run: ruff format --check
+        run: uv run ruff format --check
