@@ -1,0 +1,29 @@
+name: Lint and Format Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Run linting
+        run: uv run ruff check
+
+      - name: Check source code formatting
+        if: ${{ success() }}
+        run: uv run ruff format --check
